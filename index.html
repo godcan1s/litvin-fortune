@@ -50,7 +50,7 @@
       var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
       ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
       ttq.load('D26BPV3C77U916NIVH90');
-      ttq.page(); // PageView событие отправляется автоматически
+      ttq.page();
     }(window, document, 'ttq');
     </script>
     <!-- TikTok Pixel Code End -->
@@ -82,7 +82,7 @@
     </div>
 
     <script>
-        // Утилита для получения test_id из URL (если идёт тестовый трафик)
+        // Получение test_id из URL (если тест)
         function getTtTestId() {
             const params = new URLSearchParams(window.location.search);
             return params.get('tt_test_id');
@@ -93,7 +93,7 @@
         const ctaButton = document.getElementById('cta-button');
         const messageBox = document.getElementById('message-box');
 
-        // Обновление счетчика каждые 3 секунды
+        // Обновление счетчика призов каждые 3 секунды
         const prizeInterval = setInterval(() => {
             if (prizesLeft > 0) {
                 prizesLeft--;
@@ -103,19 +103,18 @@
             }
         }, 3000);
 
-        // Отправить кастомное событие "Click" по клику на кнопку (можно трекать все клики отдельно)
+        // Отправляем ClickButton (стандартный TikTok event) по любому нажатию на кнопку
         ctaButton.addEventListener('mousedown', function() {
             if (typeof ttq !== "undefined") {
                 let testId = getTtTestId();
                 if (testId) {
                     ttq.instance(testId.split('_')[0]);
                 }
-                ttq.track('Click', { button: "cta" });
-                console.log('TikTok Pixel: Click event sent');
+                ttq.track('ClickButton', { button_text: "cta" });
             }
         });
 
-        // Отправить Lead и редирект
+        // Отправляем Lead и редиректим
         ctaButton.addEventListener('click', function() {
             messageBox.style.display = 'block';
             if (typeof ttq !== "undefined") {
@@ -124,16 +123,13 @@
                     ttq.instance(testId.split('_')[0]);
                 }
                 ttq.track('Lead');
-                console.log('TikTok Pixel: Lead event sent');
-            } else {
-                console.warn('TikTok Pixel не определён!');
             }
             setTimeout(function() {
                 window.location.href = 'https://creativecallproject.site/public/7722103963237521';
-            }, 700); // Увеличил задержку для надёжности
+            }, 700);
         });
 
-        // Дополнительно: событие просмотра страницы отправляется автоматически через ttq.page()
+        // ttq.page(); уже вызывается автоматически при инициализации пикселя (PageView)
     </script>
 </body>
 </html>
