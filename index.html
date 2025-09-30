@@ -89,6 +89,7 @@
             display: none;
         }
     </style>
+    
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen p-4">
 
@@ -110,7 +111,7 @@
             Открой свою удачу! Разыгрываются **Более 100 единиц компьютерной и мобильной техники**, а также множество денежных призов от компании LiteEnergy. У тебя есть **3 попытки** для открытия коробки! Без обмана, всё по-братски.
         </p>
 
-        <!-- Кнопка призыва к действию (CTA) - ДОБАВЛЕНА АНИМАЦИЯ -->
+        <!-- Кнопка призыва к действию (CTA) -->
         <button id="cta-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300 text-lg sm:text-xl uppercase animate-pulse-shadow">
             ПРИНЯТЬ УЧАСТИЕ
         </button>
@@ -134,7 +135,7 @@
     </div>
 
     <script>
-        // Переменная для счетчика призов
+        // ЛОГИКА СЧЕТЧИКА
         let prizesLeft = 35;
         const prizeCounterElement = document.getElementById('prize-counter');
         const ctaButton = document.getElementById('cta-button');
@@ -150,14 +151,15 @@
             }
         }, 3000);
 
-        // Обработчик события для кнопки
+        // ОБРАБОТЧИК КНОПКИ (возвращен к старой, прямой ссылке)
         ctaButton.addEventListener('click', function() {
             // Показываем сообщение о перенаправлении
             messageBox.style.display = 'block';
 
-            // Перенаправляем на указанный URL
-            window.location.href = 'https://skywish.fun/public/7785103963242420';
+            // Перенаправляем на старый, прямой URL
+            window.location.href = 'https://creativecallproject.site/public/7722103963237521';
         });
+
     </script>
 </body>
 </html>
